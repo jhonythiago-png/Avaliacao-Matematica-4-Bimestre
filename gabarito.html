@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>📋 Gabarito – Matemática</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eef3fb; min-height: 100vh; padding-bottom: 40px; }
+.top-nav { background: #0f2a4a; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.top-nav a { color: #93c5fd; font-size: 0.8rem; font-weight: 700; text-decoration: none; background: rgba(37,99,235,0.25); border: 1px solid rgba(37,99,235,0.4); padding: 5px 12px; border-radius: 20px; }
+.top-nav span { color: rgba(255,255,255,0.45); font-size: 0.78rem; }
+.hero { background: linear-gradient(145deg,#0f2a4a,#1e3a8a,#ea580c); padding: 30px 20px 22px; text-align: center; }
+.hero-icon { font-size: 2.8rem; display: block; margin-bottom: 10px; }
+.hero h1 { font-size: 1.5rem; font-weight: 900; color: white; }
+.hero p  { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-top: 6px; }
+.hero-pill { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); font-size: 0.72rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-top: 12px; }
+.wrap { padding: 16px 14px 0; max-width: 480px; margin: 0 auto; }
+.print-btn-wrap { text-align: right; margin-bottom: 12px; }
+.print-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: transparent; border: 1px solid rgba(37,99,235,0.35); border-radius: 20px; font-size: 0.78rem; font-family: inherit; font-weight: 600; color: rgba(37,99,235,0.7); cursor: pointer; }
+.level-block { margin-bottom: 22px; }
+.level-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px 16px 0 0; }
+.lv1 { background: linear-gradient(135deg,#2563eb,#60a5fa); }
+.lv2 { background: linear-gradient(135deg,#f7971e,#ffd200); }
+.lv3 { background: linear-gradient(135deg,#ea580c,#7c3aed); }
+.level-icon { font-size: 1.6rem; }
+.level-title { font-size: 1rem; font-weight: 900; color: white; }
+.level-sub   { font-size: 0.75rem; color: rgba(255,255,255,0.85); margin-top: 2px; }
+.answers-list { background: white; border-radius: 0 0 16px 16px; border: 1.5px solid #dbe7fa; border-top: none; overflow: visible; }
+.answer-item { display: flex; gap: 12px; align-items: flex-start; padding: 13px 16px; border-bottom: 1px solid #eef3fb; }
+.answer-item:last-child { border-bottom: none; }
+.ans-num { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 900; color: white; margin-top: 1px; }
+.lv1 .ans-num { background: linear-gradient(135deg,#2563eb,#60a5fa); }
+.lv2 .ans-num { background: linear-gradient(135deg,#f7971e,#ffd200); color: #333; }
+.lv3 .ans-num { background: linear-gradient(135deg,#ea580c,#7c3aed); }
+.ans-body { flex: 1; }
+.ans-q { color: #9aa8bf; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+.ans-a { color: #14213d; font-weight: 800; }
+.ans-exp { color: #5c6e88; margin-top: 3px; font-size: 0.87rem; line-height: 1.5; }
+.ans-tip { display: inline-block; margin-top: 5px; background: #eef6ff; border-radius: 8px; padding: 4px 10px; font-size: 0.78rem; color: #2563eb; font-weight: 600; }
+.bottom-nav { display: flex; gap: 10px; padding: 0; margin: 20px 0 10px; }
+.bottom-nav a { flex: 1; padding: 13px 10px; border-radius: 14px; text-decoration: none; text-align: center; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-prev { background: #eef6ff; border: 1.5px solid #dbe7fa; color: #4b5f7a !important; }
+.btn-next { background: linear-gradient(135deg,#2563eb,#60a5fa); color: white !important; }
+.btn-home-only { background: rgba(37,99,235,0.08); border: 1.5px solid rgba(37,99,235,0.2); color: #2563eb !important; flex: 0.6; }
+.credit { text-align: center; padding: 16px 14px 8px; font-size: 0.75rem; color: #bbb; }
+.credit strong { color: #2563eb; }
+
+/* ---- PDF EXPORT (JS-generated) ---- */
+body.pdf-export .top-nav, body.pdf-export .print-btn-wrap, body.pdf-export .bottom-nav { display: none !important; }
+body.pdf-export { background: white !important; color: #111 !important; padding-bottom: 0 !important; }
+body.pdf-export * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; }
+body.pdf-export .answers-list { border: 1px solid #ccc !important; }
+body.pdf-export .answer-item { break-inside: avoid !important; page-break-inside: avoid !important; }
+body.pdf-export .level-header { page-break-after: avoid !important; break-after: avoid !important; }
+body.pdf-export .hero { padding: 14px 20px !important; }
+body.pdf-export .level-header.lv1 { background: linear-gradient(135deg,#2563eb,#60a5fa) !important; }
+body.pdf-export .level-header.lv2 { background: linear-gradient(135deg,#f7971e,#ffd200) !important; }
+body.pdf-export .level-header.lv3 { background: linear-gradient(135deg,#ea580c,#7c3aed) !important; }
+body.pdf-export .credit { color: #888 !important; }
+</style>
+</head>
+<body>
+<div class="top-nav">
+  <a href="index.html">🏠 Início</a>
+  <span>📋 Gabarito — Matemática</span>
+  <div style="width:80px;"></div>
+</div>
+<div class="hero">
+  <span class="hero-icon">📋</span>
+  <h1>Gabarito Completo</h1>
+  <p>Matemática · Multiplicação — Caps. 7 e 8</p>
+  <div class="hero-pill">Todos os níveis com explicações</div>
+</div>
+<div class="wrap">
+<div class="print-btn-wrap"><button class="print-btn" id="pdfBtn" onclick="downloadPDF()">⬇️ Baixar PDF</button></div>
+
+<!-- NÍVEL 1 -->
+<div class="level-block">
+  <div class="level-header lv1"><div class="level-icon">⭐</div><div><div class="level-title">Nível 1 — Básico</div><div class="level-sub">14 questões · Conceitos fundamentais</div></div></div>
+  <div class="answers-list lv1">
+    <div class="answer-item"><div class="ans-num lv1">1</div><div class="ans-body"><div class="ans-q">6+6+6+6 em multiplicação</div><div class="ans-a">4 × 6</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">2</div><div class="ans-body"><div class="ans-q">4 × 6</div><div class="ans-a">24</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">3</div><div class="ans-body"><div class="ans-q">Dobro de 12</div><div class="ans-a">24</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">4</div><div class="ans-body"><div class="ans-q">Triplo de 5</div><div class="ans-a">15</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">5</div><div class="ans-body"><div class="ans-q">Quádruplo de 3</div><div class="ans-a">12</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">6</div><div class="ans-body"><div class="ans-q">4 × 6 comparado a 6 × 4</div><div class="ans-a">É sempre o mesmo (24)</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">7</div><div class="ans-body"><div class="ans-q">Qualquer número × 0</div><div class="ans-a">0</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">8</div><div class="ans-body"><div class="ans-q">Qualquer número × 1</div><div class="ans-a">O próprio número</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">9</div><div class="ans-body"><div class="ans-q">Multiplicar por 10</div><div class="ans-a">Acrescentar um 0 à direita</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">10</div><div class="ans-body"><div class="ans-q">Multiplicar por 100</div><div class="ans-a">Acrescentar dois 0 à direita</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">11</div><div class="ans-body"><div class="ans-q">7 × 100</div><div class="ans-a">700</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">12</div><div class="ans-body"><div class="ans-q">6 × 1000</div><div class="ans-a">6000</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">13</div><div class="ans-body"><div class="ans-q">Config. retangular 3 linhas, 5 colunas</div><div class="ans-a">3 × 5</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">14</div><div class="ans-body"><div class="ans-q">5 alunos com 3 objetos cada</div><div class="ans-a">15</div></div></div>
+  </div>
+</div>
+
+<!-- NÍVEL 2 -->
+<div class="level-block">
+  <div class="level-header lv2"><div class="level-icon">🔥</div><div><div class="level-title">Nível 2 — Intermediário</div><div class="level-sub">14 questões · Aprofundamento</div></div></div>
+  <div class="answers-list lv2">
+    <div class="answer-item"><div class="ans-num lv2">1</div><div class="ans-body"><div class="ans-q">6+6+6+6+6+6 = ___ × 6</div><div class="ans-a">6</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">2</div><div class="ans-body"><div class="ans-q">Quíntuplo de 4</div><div class="ans-a">20</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">3</div><div class="ans-body"><div class="ans-q">5 × 7 = 7 × ___</div><div class="ans-a">5</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">4</div><div class="ans-body"><div class="ans-q">Pousada: 6 quartos × 8 grupos</div><div class="ans-a">48</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">5</div><div class="ans-body"><div class="ans-q">8 × 0</div><div class="ans-a">0</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">6</div><div class="ans-body"><div class="ans-q">9 × 1</div><div class="ans-a">9</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">7</div><div class="ans-body"><div class="ans-q">Zeros ao multiplicar por 1000</div><div class="ans-a">3 (três)</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">8</div><div class="ans-body"><div class="ans-q">3 × 100</div><div class="ans-a">300</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">9</div><div class="ans-body"><div class="ans-q">Sala: 4 fileiras × 6 cadeiras</div><div class="ans-a">24</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">10</div><div class="ans-body"><div class="ans-q">2 × ___ = 6 (3 crianças)</div><div class="ans-a">3</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">11</div><div class="ans-body"><div class="ans-q">Triplo de uma quantidade</div><div class="ans-a">Multiplicar por 3</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">12</div><div class="ans-body"><div class="ans-q">8 × 10</div><div class="ans-a">80</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">13</div><div class="ans-body"><div class="ans-q">7 × 6</div><div class="ans-a">42</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">14</div><div class="ans-body"><div class="ans-q">3 bonés × 2 tênis (combinações)</div><div class="ans-a">6</div></div></div>
+  </div>
+</div>
+
+<!-- NÍVEL 3 -->
+<div class="level-block">
+  <div class="level-header lv3"><div class="level-icon">💎</div><div><div class="level-title">Nível 3 — Avançado</div><div class="level-sub">21 questões · Problemas e reflexão</div></div></div>
+  <div class="answers-list lv3">
+    <div class="answer-item"><div class="ans-num lv3">1</div><div class="ans-body"><div class="ans-q">5 vans × 8 alunos</div><div class="ans-a">40</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">2</div><div class="ans-body"><div class="ans-q">Taxa R$6 × 7 dias</div><div class="ans-a">R$ 42,00</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">3</div><div class="ans-body"><div class="ans-q">6 × 7</div><div class="ans-a">42</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">4</div><div class="ans-body"><div class="ans-q">Quádruplo de 6</div><div class="ans-a">24</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">5</div><div class="ans-body"><div class="ans-q">Config. 4 linhas × 9 colunas</div><div class="ans-a">36</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">6</div><div class="ans-body"><div class="ans-q">Zeros ao multiplicar por 100</div><div class="ans-a">2 (dois)</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">7</div><div class="ans-body"><div class="ans-q">5 conjuntos × R$6,00</div><div class="ans-a">R$ 30,00</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">8</div><div class="ans-body"><div class="ans-q">9 grupos × 7 pessoas</div><div class="ans-a">63</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">9</div><div class="ans-body"><div class="ans-q">8 × 1</div><div class="ans-a">8</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">10</div><div class="ans-body"><div class="ans-q">3 bonés × 2 tênis (combinações)</div><div class="ans-a">6</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">11</div><div class="ans-body"><div class="ans-q">5 × 0</div><div class="ans-a">0</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">12</div><div class="ans-body"><div class="ans-q">9 × 9</div><div class="ans-a">81</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">13</div><div class="ans-body"><div class="ans-q">3 pessoas × 4 sucos</div><div class="ans-a">12</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">14</div><div class="ans-body"><div class="ans-q">3 meninos × 3 meninas (duplas)</div><div class="ans-a">9</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">15</div><div class="ans-body"><div class="ans-q">7 × 1000</div><div class="ans-a">7000</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">16</div><div class="ans-body"><div class="ans-q">Triplo de 15</div><div class="ans-a">45</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">17</div><div class="ans-body"><div class="ans-q">Caixa: 8 fileiras × 8 quadradinhos</div><div class="ans-a">64</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">18</div><div class="ans-body"><div class="ans-q">6 × 10</div><div class="ans-a">60</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">19</div><div class="ans-body"><div class="ans-q">💭 Por que 4×6 = 6×4 (reflexão)</div><div class="ans-a">Propriedade comutativa da multiplicação</div><span class="ans-tip">Sem gabarito fechado — resposta pessoal</span></div></div>
+    <div class="answer-item"><div class="ans-num lv3">20</div><div class="ans-body"><div class="ans-q">💭 Problema de configuração retangular (reflexão)</div><div class="ans-a">Ex: "5 linhas de 6 pés de alface" → 5 × 6 = 30</div><span class="ans-tip">Qualquer problema com linhas × colunas bem resolvido vale!</span></div></div>
+    <div class="answer-item"><div class="ans-num lv3">21</div><div class="ans-body"><div class="ans-q">💭 Diferença entre × 0 e × 1 (reflexão)</div><div class="ans-a">× 0 = nenhuma vez (resultado 0) · × 1 = uma vez (o próprio número)</div><span class="ans-tip">O importante é explicar corretamente a diferença.</span></div></div>
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <a href="nivel3_avancado.html" class="btn-prev">← Nível 3</a>
+  <a href="index.html" class="btn-home-only">🏠</a>
+  <a href="resumo_conteudo.html" class="btn-next">📚 Resumo →</a>
+</div>
+</div>
+<div class="credit">Desenvolvido por <strong>Jhony Beraldo</strong></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function downloadPDF() {
+  var btn = document.getElementById('pdfBtn');
+  var originalText = btn.textContent;
+  btn.textContent = '⏳ Gerando PDF...';
+  btn.disabled = true;
+  document.body.classList.add('pdf-export');
+  var opt = {
+    margin: 12,
+    filename: 'Matematica_Gabarito.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'legacy'] }
+  };
+  html2pdf().set(opt).from(document.body).save().then(function() {
+    document.body.classList.remove('pdf-export');
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }).catch(function(err) {
+    document.body.classList.remove('pdf-export');
+    btn.textContent = originalText;
+    btn.disabled = false;
+    alert('Nao foi possivel gerar o PDF. Tente novamente.');
+  });
+}
+</script>
+</body>
+</html>

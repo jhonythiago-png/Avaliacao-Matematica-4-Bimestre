@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>⭐ Nível 1 – Básico</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eef3fb; min-height: 100vh; padding-bottom: 40px; }
+.top-nav { background: #0f2a4a; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.top-nav a.nav-home { color: #93c5fd; font-size: 0.8rem; font-weight: 700; text-decoration: none; background: rgba(37,99,235,0.25); border: 1px solid rgba(37,99,235,0.4); padding: 5px 12px; border-radius: 20px; }
+.top-nav .nav-title { font-size: 0.78rem; color: rgba(255,255,255,0.45); flex: 1; text-align: center; }
+.exam-header { background: white; border: 2px solid #2563eb; border-radius: 16px; padding: 16px; margin: 12px 14px 16px; }
+.eh-title { text-align: center; font-size: 0.95rem; font-weight: 900; color: #2563eb; margin-bottom: 14px; }
+.eh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+.eh-field label { display: block; font-size: 0.68rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.eh-field input { width: 100%; border: none; border-bottom: 2px solid #2563eb; padding: 5px 2px; font-size: 0.9rem; font-family: inherit; outline: none; background: transparent; color: #333; }
+.header { text-align: center; padding: 22px 16px 14px; background: linear-gradient(135deg,#2563eb,#60a5fa); margin-bottom: 18px; }
+.header h1 { font-size: 1.4rem; font-weight: 900; color: white; }
+.header p  { font-size: 0.82rem; color: rgba(255,255,255,0.85); margin-top: 4px; }
+.level-tag { display: inline-block; background: rgba(255,255,255,0.25); color: white; font-size: 0.72rem; font-weight: 800; padding: 3px 12px; border-radius: 20px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+.wrap { padding: 0 14px; }
+.print-btn-wrap { text-align: right; margin-bottom: 12px; }
+.print-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: transparent; border: 1px solid rgba(37,99,235,0.35); border-radius: 20px; font-size: 0.78rem; font-family: inherit; font-weight: 600; color: rgba(37,99,235,0.7); cursor: pointer; }
+.score-bar { background: white; border-radius: 14px; padding: 12px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+.score-label { font-size: 0.82rem; color: #888; }
+.score-num { font-size: 1.4rem; font-weight: 900; color: #2563eb; }
+.card { background: white; border: 1px solid #dbe7fa; border-radius: 16px; padding: 18px; margin-bottom: 14px; box-shadow: 0 3px 12px rgba(37,99,235,0.08); border-left: 5px solid #2563eb; }
+.q-num { background: linear-gradient(135deg,#2563eb,#60a5fa); color: white; font-weight: 900; font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 8px; }
+.q-type { font-size: 0.72rem; opacity: 0.55; text-transform: uppercase; letter-spacing: 0.5px; color: #999; margin-left: 6px; }
+.q-text { font-size: 0.97rem; color: #333; margin-bottom: 14px; line-height: 1.6; }
+.q-text strong { color: #2563eb; font-weight: 700; }
+.options { display: flex; flex-direction: column; gap: 9px; }
+.opt-btn { background: #f7faff; border: 2px solid #dbe7fa; border-radius: 12px; padding: 12px 14px; font-size: 0.92rem; font-family: inherit; cursor: pointer; text-align: left; color: #444; transition: transform 0.1s; line-height: 1.4; }
+.opt-btn:active { transform: scale(0.97); }
+.opt-btn.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+.opt-btn.wrong   { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+.opt-btn.disabled { pointer-events: none; }
+.feedback { display: none; margin-top: 10px; padding: 12px 13px; border-radius: 10px; font-size: 0.88rem; line-height: 1.6; }
+.feedback.show { display: block; }
+.feedback.ok  { background: #d4edda; border: 1px solid #28a745; color: #155724; }
+.feedback.nok { background: #f8d7da; border: 1px solid #dc3545; color: #721c24; }
+.fb-answer { font-weight: 800; display: block; margin-bottom: 4px; }
+.fb-tip    { font-size: 0.83rem; opacity: 0.85; color: #333; }
+.finish-btn { display: block; width: 100%; padding: 16px; background: linear-gradient(135deg,#2563eb,#16a34a); color: white; border: none; border-radius: 16px; font-size: 1.1rem; font-family: inherit; font-weight: 900; cursor: pointer; margin-top: 6px; }
+.result-panel { display: none; background: white; border: none; border-radius: 20px; padding: 28px 20px; text-align: center; margin-top: 20px; }
+.result-panel.show { display: block; }
+.result-big { font-size: 4rem; margin-bottom: 10px; }
+.result-grade { font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg,#2563eb,#16a34a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 8px 0 2px; }
+.result-grade-label { font-size: 0.8rem; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.result-msg   { font-size: 1.1rem; font-weight: 800; color: #333; margin-bottom: 8px; }
+.result-score { font-size: 0.88rem; color: #888; margin-bottom: 16px; }
+.result-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.retry-btn { flex: 1; min-width: 130px; background: linear-gradient(135deg,#38bdf8,#1e3a8a); color: white; border: none; border-radius: 14px; padding: 13px 16px; font-size: 0.9rem; font-family: inherit; font-weight: 700; cursor: pointer; }
+.gabarito-link { flex: 1; min-width: 130px; background: rgba(37,99,235,0.1); border: 1.5px solid rgba(37,99,235,0.25); color: #2563eb !important; border-radius: 14px; padding: 13px 16px; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.bottom-nav { display: flex; gap: 10px; padding: 0; margin: 20px 0 10px; }
+.bottom-nav a { flex: 1; padding: 13px 10px; border-radius: 14px; text-decoration: none; text-align: center; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-prev { background: rgba(37,99,235,0.08); border: 1.5px solid rgba(37,99,235,0.2); color: #2563eb !important; }
+.btn-next { background: linear-gradient(135deg,#2563eb,#60a5fa); color: white !important; }
+.btn-home-only { background: rgba(37,99,235,0.08); border: 1.5px solid rgba(37,99,235,0.2); color: #2563eb !important; flex: 0.6; }
+.credit { text-align: center; padding: 20px 14px 8px; font-size: 0.75rem; color: #bbb; }
+.credit strong { color: #2563eb; }
+
+/* ---- PDF EXPORT (JS-generated) ---- */
+body.pdf-export .top-nav, body.pdf-export .print-btn-wrap, body.pdf-export .score-bar, body.pdf-export .finish-btn, body.pdf-export .result-panel, body.pdf-export #resultPanel, body.pdf-export .bottom-nav { display: none !important; }
+body.pdf-export { background: white !important; color: #111 !important; padding-bottom: 0 !important; }
+body.pdf-export * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; }
+body.pdf-export .exam-header { display: block !important; border: 2px solid #555 !important; }
+body.pdf-export .eh-field input { border-bottom: 1.5px solid #555 !important; color: #111 !important; }
+body.pdf-export .card { border: 1px solid #ccc !important; }
+body.pdf-export .opt-btn { border: 1.5px solid #bbb !important; color: #222 !important; background: white !important; margin-bottom: 4px !important; }
+body.pdf-export .opt-btn.correct, body.pdf-export .opt-btn.wrong { background: white !important; border-color: #bbb !important; }
+body.pdf-export .feedback { display: none !important; }
+body.pdf-export .header { background: white !important; border-bottom: 2px solid #2563eb !important; }
+body.pdf-export .header h1, body.pdf-export .header p, body.pdf-export .level-tag { color: #111 !important; }
+body.pdf-export .credit { color: #888 !important; }
+</style>
+</head>
+<body>
+<div class="top-nav">
+  <a href="index.html" class="nav-home">🏠 Início</a>
+  <span class="nav-title">⭐ Nível 1 — Básico</span>
+</div>
+
+<div class="exam-header">
+  <div class="eh-title">🧮 Avaliação de Matemática — Nível 1</div>
+  <div class="eh-grid">
+    <div class="eh-field"><label>Nome</label><input type="text" placeholder="Seu nome"></div>
+    <div class="eh-field"><label>Data</label><input type="text" placeholder="__/__/____"></div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="level-tag">Nível 1</div>
+  <h1>⭐ Básico</h1>
+  <p>Multiplicação — Caps. 7 e 8 · 14 questões</p>
+</div>
+
+<div class="wrap">
+<div class="print-btn-wrap"><button class="print-btn" id="pdfBtn" onclick="downloadPDF()">⬇️ Baixar PDF</button></div>
+<div class="score-bar">
+  <span class="score-label">Pontuação</span>
+  <span class="score-num" id="scoreDisplay">0 / 14</span>
+</div>
+
+<!-- Q1 -->
+<div class="card" id="q1">
+  <div class="q-num">1</div><span class="q-type">Parcelas iguais</span>
+  <div class="q-text">6 + 6 + 6 + 6 é uma adição de parcelas iguais. Qual multiplicação representa essa soma?</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q1" data-correct="true" data-msg="Isso mesmo! São 4 parcelas de 6, ou seja, 4 × 6." data-tip="">4 × 6</button>
+    <button class="opt-btn" data-q="q1" data-correct="false" data-msg="Errado! Conte quantas vezes o 6 aparece na soma." data-tip="💡 Conte quantos números 6 estão sendo somados.">6 × 6</button>
+    <button class="opt-btn" data-q="q1" data-correct="false" data-msg="Errado! Isso seria uma adição, não a multiplicação equivalente." data-tip="💡 Conte quantos números 6 estão sendo somados.">4 + 6</button>
+  </div>
+  <div class="feedback" id="fb-q1"></div>
+</div>
+
+<!-- Q2 -->
+<div class="card" id="q2">
+  <div class="q-num">2</div><span class="q-type">Multiplicação básica</span>
+  <div class="q-text">Quanto é 4 × 6?</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q2" data-correct="true" data-msg="Isso mesmo! 4 × 6 = 24." data-tip="">24</button>
+    <button class="opt-btn" data-q="q2" data-correct="false" data-msg="Errado! Recalcule 4 vezes 6." data-tip="💡 Pense em 6+6+6+6.">20</button>
+    <button class="opt-btn" data-q="q2" data-correct="false" data-msg="Errado! Recalcule 4 vezes 6." data-tip="💡 Pense em 6+6+6+6.">28</button>
+  </div>
+  <div class="feedback" id="fb-q2"></div>
+</div>
+
+<!-- Q3 -->
+<div class="card" id="q3">
+  <div class="q-num">3</div><span class="q-type">Fatos fundamentais</span>
+  <div class="q-text">O dobro de 12 é:</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q3" data-correct="true" data-msg="Isso mesmo! Dobro é multiplicar por 2: 12 × 2 = 24." data-tip="">24</button>
+    <button class="opt-btn" data-q="q3" data-correct="false" data-msg="Errado! Isso seria metade de 12, não o dobro." data-tip="💡 Dobro significa multiplicar por 2.">6</button>
+    <button class="opt-btn" data-q="q3" data-correct="false" data-msg="Errado! Recalcule 12 × 2." data-tip="💡 Dobro significa multiplicar por 2.">36</button>
+  </div>
+  <div class="feedback" id="fb-q3"></div>
+</div>
+
+<!-- Q4 -->
+<div class="card" id="q4">
+  <div class="q-num">4</div><span class="q-type">Fatos fundamentais</span>
+  <div class="q-text">O triplo de 5 é:</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q4" data-correct="true" data-msg="Isso mesmo! Triplo é multiplicar por 3: 5 × 3 = 15." data-tip="">15</button>
+    <button class="opt-btn" data-q="q4" data-correct="false" data-msg="Errado! Isso seria o dobro de 5." data-tip="💡 Triplo significa multiplicar por 3.">10</button>
+    <button class="opt-btn" data-q="q4" data-correct="false" data-msg="Errado! Recalcule 5 × 3." data-tip="💡 Triplo significa multiplicar por 3.">20</button>
+  </div>
+  <div class="feedback" id="fb-q4"></div>
+</div>
+
+<!-- Q5 -->
+<div class="card" id="q5">
+  <div class="q-num">5</div><span class="q-type">Fatos fundamentais</span>
+  <div class="q-text">O quádruplo de 3 é:</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q5" data-correct="true" data-msg="Isso mesmo! Quádruplo é multiplicar por 4: 3 × 4 = 12." data-tip="">12</button>
+    <button class="opt-btn" data-q="q5" data-correct="false" data-msg="Errado! Isso seria o triplo de 3." data-tip="💡 Quádruplo significa multiplicar por 4.">9</button>
+    <button class="opt-btn" data-q="q5" data-correct="false" data-msg="Errado! Recalcule 3 × 4." data-tip="💡 Quádruplo significa multiplicar por 4.">15</button>
+  </div>
+  <div class="feedback" id="fb-q5"></div>
+</div>
+
+<!-- Q6 -->
+<div class="card" id="q6">
+  <div class="q-num">6</div><span class="q-type">Fatos fundamentais</span>
+  <div class="q-text">Ao multiplicar 4 × 6 ou 6 × 4, o resultado:</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q6" data-correct="true" data-msg="Isso mesmo! Essa é a propriedade comutativa — o resultado é sempre 24." data-tip="">É sempre o mesmo (24)</button>
+    <button class="opt-btn" data-q="q6" data-correct="false" data-msg="Errado! A ordem dos fatores não muda o resultado da multiplicação." data-tip="💡 Calcule os dois e compare.">Muda dependendo da ordem</button>
+    <button class="opt-btn" data-q="q6" data-correct="false" data-msg="Errado! Os dois resultados são exatamente iguais." data-tip="💡 Calcule os dois e compare.">Nunca é igual</button>
+  </div>
+  <div class="feedback" id="fb-q6"></div>
+</div>
+
+<!-- Q7 -->
+<div class="card" id="q7">
+  <div class="q-num">7</div><span class="q-type">Multiplicação por 0 e 1</span>
+  <div class="q-text">Qualquer número multiplicado por 0 resulta em:</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q7" data-correct="true" data-msg="Isso mesmo! Multiplicar por 0 sempre dá 0." data-tip="">0</button>
+    <button class="opt-btn" data-q="q7" data-correct="false" data-msg="Errado! Isso acontece ao multiplicar por 1, não por 0." data-tip="💡 Pense em '0 vezes' um grupo — não juntamos nada.">O próprio número</button>
+    <button class="opt-btn" data-q="q7" data-correct="false" data-msg="Errado! O resultado nunca é 1 nesse caso." data-tip="💡 Pense em '0 vezes' um grupo — não juntamos nada.">1</button>
+  </div>
+  <div class="feedback" id="fb-q7"></div>
+</div>
+
+<!-- Q8 -->
+<div class="card" id="q8">
+  <div class="q-num">8</div><span class="q-type">Multiplicação por 0 e 1</span>
+  <div class="q-text">Qualquer número multiplicado por 1 resulta em:</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q8" data-correct="true" data-msg="Isso mesmo! Multiplicar por 1 sempre dá o próprio número." data-tip="">O próprio número</button>
+    <button class="opt-btn" data-q="q8" data-correct="false" data-msg="Errado! Isso acontece ao multiplicar por 0, não por 1." data-tip="💡 Pense em '1 vez' um grupo — é a própria quantidade.">0</button>
+    <button class="opt-btn" data-q="q8" data-correct="false" data-msg="Errado! O resultado depende do número, não é sempre 10." data-tip="💡 Pense em '1 vez' um grupo — é a própria quantidade.">Sempre 10</button>
+  </div>
+  <div class="feedback" id="fb-q8"></div>
+</div>
+
+<!-- Q9 -->
+<div class="card" id="q9">
+  <div class="q-num">9</div><span class="q-type">Multiplicação por 10, 100, 1000</span>
+  <div class="q-text">Para multiplicar um número por 10, basta:</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q9" data-correct="true" data-msg="Isso mesmo! Acrescentamos um zero à direita do número." data-tip="">Acrescentar um 0 à direita</button>
+    <button class="opt-btn" data-q="q9" data-correct="false" data-msg="Errado! Isso é usado para multiplicar por 100." data-tip="💡 Pense em 6 × 10 = 60.">Acrescentar dois 0 à direita</button>
+    <button class="opt-btn" data-q="q9" data-correct="false" data-msg="Errado! Isso não representa multiplicar por 10." data-tip="💡 Pense em 6 × 10 = 60.">Dividir o número por 10</button>
+  </div>
+  <div class="feedback" id="fb-q9"></div>
+</div>
+
+<!-- Q10 -->
+<div class="card" id="q10">
+  <div class="q-num">10</div><span class="q-type">Multiplicação por 10, 100, 1000</span>
+  <div class="q-text">Para multiplicar um número por 100, basta:</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q10" data-correct="true" data-msg="Isso mesmo! Acrescentamos dois zeros à direita." data-tip="">Acrescentar dois 0 à direita</button>
+    <button class="opt-btn" data-q="q10" data-correct="false" data-msg="Errado! Isso é usado para multiplicar por 10." data-tip="💡 Pense em 6 × 100 = 600.">Acrescentar um 0 à direita</button>
+    <button class="opt-btn" data-q="q10" data-correct="false" data-msg="Errado! Isso é usado para multiplicar por 1000." data-tip="💡 Pense em 6 × 100 = 600.">Acrescentar três 0 à direita</button>
+  </div>
+  <div class="feedback" id="fb-q10"></div>
+</div>
+
+<!-- Q11 -->
+<div class="card" id="q11">
+  <div class="q-num">11</div><span class="q-type">Multiplicação por 10, 100, 1000</span>
+  <div class="q-text">Quanto é 7 × 100?</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q11" data-correct="true" data-msg="Isso mesmo! 7 × 100 = 700." data-tip="">700</button>
+    <button class="opt-btn" data-q="q11" data-correct="false" data-msg="Errado! Isso seria 7 × 10." data-tip="💡 Acrescente dois zeros ao 7.">70</button>
+    <button class="opt-btn" data-q="q11" data-correct="false" data-msg="Errado! Isso seria 7 × 1000." data-tip="💡 Acrescente dois zeros ao 7.">7000</button>
+  </div>
+  <div class="feedback" id="fb-q11"></div>
+</div>
+
+<!-- Q12 -->
+<div class="card" id="q12">
+  <div class="q-num">12</div><span class="q-type">Multiplicação por 10, 100, 1000</span>
+  <div class="q-text">Quanto é 6 × 1000?</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q12" data-correct="true" data-msg="Isso mesmo! 6 × 1000 = 6000." data-tip="">6000</button>
+    <button class="opt-btn" data-q="q12" data-correct="false" data-msg="Errado! Isso seria 6 × 100." data-tip="💡 Acrescente três zeros ao 6.">600</button>
+    <button class="opt-btn" data-q="q12" data-correct="false" data-msg="Errado! Isso seria 6 × 10." data-tip="💡 Acrescente três zeros ao 6.">60</button>
+  </div>
+  <div class="feedback" id="fb-q12"></div>
+</div>
+
+<!-- Q13 -->
+<div class="card" id="q13">
+  <div class="q-num">13</div><span class="q-type">Configuração retangular</span>
+  <div class="q-text">Uma configuração retangular com 3 linhas e 5 colunas representa a multiplicação:</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q13" data-correct="true" data-msg="Isso mesmo! Configuração retangular é linhas × colunas: 3 × 5." data-tip="">3 × 5</button>
+    <button class="opt-btn" data-q="q13" data-correct="false" data-msg="Errado! Isso seria uma adição, não a multiplicação da configuração." data-tip="💡 Linhas vezes colunas!">3 + 5</button>
+    <button class="opt-btn" data-q="q13" data-correct="false" data-msg="Errado! Isso seria uma subtração." data-tip="💡 Linhas vezes colunas!">5 − 3</button>
+  </div>
+  <div class="feedback" id="fb-q13"></div>
+</div>
+
+<!-- Q14 -->
+<div class="card" id="q14">
+  <div class="q-num">14</div><span class="q-type">Proporção</span>
+  <div class="q-text">Se cada um dos 5 alunos tem 3 objetos (caderno, lápis e borracha) sobre a mesa, o total de objetos é:</div>
+  <div class="options">
+    <button class="opt-btn" data-q="q14" data-correct="true" data-msg="Isso mesmo! 3 × 5 = 15 objetos." data-tip="">15</button>
+    <button class="opt-btn" data-q="q14" data-correct="false" data-msg="Errado! Isso seria apenas 3 + 5." data-tip="💡 Multiplique a quantidade de objetos pelo número de alunos.">8</button>
+    <button class="opt-btn" data-q="q14" data-correct="false" data-msg="Errado! Recalcule 3 × 5." data-tip="💡 Multiplique a quantidade de objetos pelo número de alunos.">53</button>
+  </div>
+  <div class="feedback" id="fb-q14"></div>
+</div>
+
+<button class="finish-btn" id="finishBtn">Ver meu resultado 🎉</button>
+
+<div class="result-panel" id="resultPanel">
+  <div class="result-big" id="resultEmoji">🎉</div>
+  <div class="result-grade" id="resultGrade"></div>
+  <div class="result-grade-label" style="font-size:0.75rem;opacity:0.55;margin-bottom:2px;">pontos</div>
+  <div class="result-grade-label" id="resultGradeLabel"></div>
+  <div class="result-msg" id="resultMsg"></div>
+  <div class="result-score" id="resultScore"></div>
+  <div class="result-actions">
+    <button class="retry-btn" onclick="location.reload()">Tentar de novo 🔄</button>
+    <a href="gabarito.html" class="gabarito-link">📋 Ver Gabarito</a>
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <a href="resumo_conteudo.html" class="btn-prev">← Resumo</a>
+  <a href="index.html" class="btn-home-only">🏠</a>
+  <a href="nivel2_intermediario.html" class="btn-next">🔥 Nível 2 →</a>
+</div>
+</div>
+
+<div class="credit">Desenvolvido por <strong>Jhony Beraldo</strong></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+var score = 0;
+var answered = {};
+var total = 14;
+
+function showFeedback(qid, isCorrect, okMsg, nokMsg, tipMsg) {
+  var fb = document.getElementById('fb-' + qid);
+  if (isCorrect) {
+    fb.innerHTML = '<span class="fb-answer">✅ ' + okMsg + '</span>';
+    fb.className = 'feedback show ok';
+  } else {
+    fb.innerHTML = '<span class="fb-answer">❌ ' + nokMsg + '</span>' + (tipMsg ? '<span class="fb-tip">' + tipMsg + '</span>' : '');
+    fb.className = 'feedback show nok';
+  }
+}
+
+document.querySelectorAll('.opt-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var qid = btn.dataset.q;
+    if (answered[qid]) return;
+    answered[qid] = true;
+    var correct = btn.dataset.correct === 'true';
+    document.getElementById(qid).querySelectorAll('.opt-btn').forEach(function(b) { b.classList.add('disabled'); });
+    if (correct) {
+      btn.classList.add('correct'); score++;
+      document.getElementById('scoreDisplay').textContent = score + ' / ' + total;
+      showFeedback(qid, true, btn.dataset.msg, '', '');
+    } else {
+      btn.classList.add('wrong');
+      showFeedback(qid, false, '', btn.dataset.msg, btn.dataset.tip);
+    }
+  });
+});
+
+document.getElementById('finishBtn').addEventListener('click', function() {
+  var panel = document.getElementById('resultPanel');
+  panel.classList.add('show');
+  var nota = Math.round((score / total) * 100);
+  var emoji, msg, gradeLabel;
+  if (nota === 100)     { emoji = '🏆'; msg = 'Incrível! Nota máxima! Você é uma superestrela! 🌟'; gradeLabel = 'PERFEITO!'; }
+  else if (nota >= 90)  { emoji = '🎉'; msg = 'Arrasou! Quase perfeito, continue assim! 💪'; gradeLabel = 'EXCELENTE!'; }
+  else if (nota >= 75)  { emoji = '😄'; msg = 'Muito bem! Você está quase dominando! 🎯'; gradeLabel = 'MUITO BOM!'; }
+  else if (nota >= 60)  { emoji = '😊'; msg = 'Bom trabalho! Revise as dicas e tente de novo!'; gradeLabel = 'BOM!'; }
+  else if (nota >= 40)  { emoji = '💪'; msg = 'Continue tentando! Estude o resumo e vai arrasar!'; gradeLabel = 'PODE MAIS!'; }
+  else                   { emoji = '📚'; msg = 'Não desista! Leia o resumo e tente novamente! 💛'; gradeLabel = 'ESTUDE MAIS!'; }
+  document.getElementById('resultEmoji').textContent = emoji;
+  document.getElementById('resultGrade').textContent = score + ' / 14';
+  document.getElementById('resultGradeLabel').textContent = gradeLabel;
+  document.getElementById('resultMsg').textContent = msg;
+  document.getElementById('resultScore').textContent = 'Você acertou ' + score + ' de ' + total + ' questões.';
+  panel.scrollIntoView({ behavior: 'smooth' });
+});
+
+function downloadPDF() {
+  var btn = document.getElementById('pdfBtn');
+  var originalText = btn.textContent;
+  btn.textContent = '⏳ Gerando PDF...';
+  btn.disabled = true;
+  document.body.classList.add('pdf-export');
+  var opt = {
+    margin: 12,
+    filename: 'Matematica_Nivel1_Basico.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'legacy'] }
+  };
+  html2pdf().set(opt).from(document.body).save().then(function() {
+    document.body.classList.remove('pdf-export');
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }).catch(function(err) {
+    document.body.classList.remove('pdf-export');
+    btn.textContent = originalText;
+    btn.disabled = false;
+    alert('Nao foi possivel gerar o PDF. Tente novamente.');
+  });
+}
+</script>
+</body>
+</html>
