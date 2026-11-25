@@ -1,379 +1,81 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>📚 Resumo – Matemática</title>
-<style>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>📚 Resumo – Matemática</title><style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eef3fb; color: #14213d; padding-bottom: 80px; }
-
-.top-nav { background: #0f2a4a; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.top-nav a { color: #93c5fd; font-size: 0.8rem; font-weight: 700; text-decoration: none; background: rgba(37,99,235,0.25); border: 1px solid rgba(37,99,235,0.4); padding: 5px 12px; border-radius: 20px; }
-.top-nav span { color: rgba(255,255,255,0.45); font-size: 0.78rem; }
-
-.hero { background: linear-gradient(145deg,#1e3a8a,#2563eb,#f97316); padding: 32px 20px 24px; text-align: center; position: relative; overflow: hidden; }
-.hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.1), transparent 60%); pointer-events: none; }
-.hero-emoji { font-size: 3rem; display: block; margin-bottom: 10px; position: relative; }
-.hero h1 { font-size: 1.55rem; font-weight: 900; color: white; line-height: 1.2; position: relative; }
-.hero h2 { font-size: 0.95rem; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 6px; position: relative; }
-.hero-pill { display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); color: white; font-size: 0.72rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-top: 12px; position: relative; }
-
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eff6ff; color: #12264d; padding-bottom: 80px; }
+.top-nav { background: #1e3a8a; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+.top-nav a { color: #93c5fd; font-size: .8rem; font-weight: 700; text-decoration: none; background: rgba(255,255,255,.12); padding: 5px 12px; border-radius: 20px; }
+.top-nav span { color: rgba(255,255,255,.55); font-size: .78rem; }
+.hero { background: linear-gradient(145deg,#1d4ed8,#2563eb,#f97316); padding: 30px 20px 22px; text-align: center; }
+.hero-emoji { font-size: 3rem; display: block; margin-bottom: 8px; }
+.hero h1 { font-size: 1.5rem; font-weight: 900; color: #fff; }
+.hero h2 { font-size: .95rem; color: rgba(255,255,255,.85); font-weight: 400; margin-top: 6px; }
+.hero-pill { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: .72rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-top: 12px; }
 .print-btn-wrap { text-align: right; padding: 10px 16px 0; }
-.print-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: transparent; border: 1px solid rgba(37,99,235,0.35); border-radius: 20px; font-size: 0.78rem; font-family: inherit; font-weight: 600; color: rgba(37,99,235,0.7); cursor: pointer; }
-.print-btn:hover { border-color: #2563eb; color: #2563eb; }
-
-.nav-dots { display: flex; justify-content: center; gap: 6px; padding: 12px 8px; background: #eef3fb; border-bottom: 1px solid #d7e5fa; flex-wrap: wrap; position: sticky; top: 41px; z-index: 40; }
-.nav-dot { background: none; border: 2px solid #93c5fd; color: #2563eb; font-size: 0.68rem; font-weight: 700; padding: 4px 9px; border-radius: 20px; cursor: pointer; white-space: nowrap; }
-.nav-dot.active, .nav-dot:active { background: #2563eb; color: white; border-color: #2563eb; }
-
-.section { padding: 20px 16px 8px; }
+.print-btn { padding: 7px 16px; background: transparent; border: 1px solid #2563eb; border-radius: 20px; font-size: .78rem; font-family: inherit; font-weight: 600; color: #2563eb; cursor: pointer; }
+.nav-dots { display: flex; justify-content: center; gap: 6px; padding: 10px 8px; background: #eff6ff; border-bottom: 1px solid #cfe0fb; flex-wrap: wrap; position: sticky; top: 41px; z-index: 40; }
+.nav-dot { background: none; border: 2px solid #93c5fd; color: #1d4ed8; font-size: .68rem; font-weight: 700; padding: 4px 9px; border-radius: 20px; cursor: pointer; white-space: nowrap; }
+.nav-dot.active { background: #2563eb; color: #fff; border-color: #2563eb; }
+.group-title { margin: 22px 16px 0; padding: 10px 14px; background: linear-gradient(135deg,#2563eb,#f97316); color: #fff; border-radius: 12px; font-weight: 900; font-size: 1rem; }
+.section { padding: 20px 16px 8px; max-width: 720px; margin: 0 auto; }
 .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-.section-icon { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
-.s1 { background: linear-gradient(135deg,#2563eb,#60a5fa); }
-.s2 { background: linear-gradient(135deg,#16a34a,#22c55e); }
-.s3 { background: linear-gradient(135deg,#7c3aed,#a855f7); }
-.s4 { background: linear-gradient(135deg,#ea580c,#f97316); }
-.s5 { background: linear-gradient(135deg,#be185d,#ec4899); }
-.s6 { background: linear-gradient(135deg,#0891b2,#22d3ee); }
-.section-title { font-size: 1.05rem; font-weight: 800; color: #14213d; }
-.section-sub { font-size: 0.74rem; color: #7f8fa8; margin-top: 2px; }
-
-.card { background: white; border-radius: 16px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 12px rgba(37,99,235,0.08); border: 1px solid #dbe7fa; }
-.card-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #2563eb; margin-bottom: 10px; }
-
-.tip { background: linear-gradient(135deg,#eef6ff,#fff7ed); border-left: 4px solid #60a5fa; border-radius: 0 12px 12px 0; padding: 12px 14px; margin-bottom: 12px; font-size: 0.88rem; line-height: 1.6; }
-.tip .tip-title { font-size: 0.7rem; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
-.tip strong { color: #2563eb; }
-
-.rule-box { background: white; border: 2px solid #2563eb; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
-.rule-title { font-size: 0.7rem; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-.rule-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed #dbe7fa; }
-.rule-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-.rule-tag { color: white; font-size: 0.75rem; font-weight: 800; padding: 3px 10px; border-radius: 6px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
-.bg-blue   { background: #2563eb; }
-.bg-green  { background: #16a34a; }
-.bg-purple { background: #7c3aed; }
-.bg-orange { background: #ea580c; }
-.bg-pink   { background: #be185d; }
-.rule-text { font-size: 0.88rem; line-height: 1.55; }
-.rule-text em { color: #2563eb; font-style: normal; font-weight: 700; }
-.rule-text small { display: block; color: #93a1b8; font-size: 0.78rem; margin-top: 2px; }
-
-.example-box { background: #f7faff; border: 1.5px solid #dbe7fa; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; font-size: 0.88rem; line-height: 1.7; }
-.example-box .ex-label { font-size: 0.68rem; font-weight: 700; color: #7f8fa8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-.ex-correct { color: #16a34a; font-weight: 700; }
-
-.num-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.num-item { background: #f7faff; border: 1.5px solid #dbe7fa; border-radius: 12px; padding: 10px 12px; text-align: center; }
-.num-item .num-big { font-size: 1.15rem; font-weight: 900; color: #2563eb; }
-.num-item .num-def  { font-size: 0.74rem; color: #6b7280; margin-top: 2px; line-height: 1.3; }
-
-.flow-grid { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
-.flow-step { background: #f7faff; border: 1.5px solid #dbe7fa; border-radius: 12px; padding: 8px 12px; font-size: 0.82rem; font-weight: 700; color: #2563eb; }
-.flow-arrow { color: #7f8fa8; font-weight: 900; }
-
-.bottom-nav { display: flex; gap: 10px; padding: 0 14px; margin: 20px 0 10px; }
-.bottom-nav a { flex: 1; padding: 13px 10px; border-radius: 14px; text-decoration: none; text-align: center; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; }
-.btn-home { background: rgba(37,99,235,0.12); border: 1.5px solid rgba(37,99,235,0.25); color: #2563eb !important; }
-.btn-next { background: linear-gradient(135deg,#2563eb,#60a5fa); color: white !important; }
-
-.divider { height: 1px; background: #dbe7fa; margin: 8px 16px 0; }
-.progress-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #dbe7fa; padding: 10px 16px; display: flex; align-items: center; gap: 12px; z-index: 20; }
-.pf-label { font-size: 0.75rem; font-weight: 700; color: #2563eb; white-space: nowrap; }
-.pf-bar { flex: 1; background: #dbe7fa; border-radius: 10px; height: 8px; overflow: hidden; }
-.pf-fill { height: 100%; background: linear-gradient(90deg,#2563eb,#16a34a); border-radius: 10px; transition: width 0.5s; width: 0%; }
-.pf-pct { font-size: 0.75rem; font-weight: 700; color: #7f8fa8; }
-.credit { text-align: center; padding: 16px 14px 8px; font-size: 0.75rem; color: #bbb; }
-.credit strong { color: #2563eb; }
-
-@media print {
-  .top-nav, .print-btn-wrap, .nav-dots, .progress-footer, .bottom-nav, .hero, .credit, .pf-bar, .pf-pct { display: none !important; }
-  .print-title-header { display: block !important; }
-  html, body { background: white !important; color: #111 !important; font-size: 11pt; min-height: 0 !important; height: auto !important; overflow: visible !important; }
-  body { padding-bottom: 0 !important; }
-  body * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; text-shadow: none !important; overflow: visible !important; }
-
-  .section { padding: 10px 0 4px !important; page-break-inside: avoid !important; }
-  .section-header { margin-bottom: 8px !important; }
-  .section-icon { width: 32px !important; height: 32px !important; font-size: 1rem !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-  .section-title { font-size: 12pt !important; font-weight: 700 !important; color: #14213d !important; }
-  .section-sub   { color: #555 !important; }
-
-  .card { border: 1px solid #bbb !important; border-radius: 6px !important; break-inside: avoid !important; page-break-inside: avoid !important; margin-bottom: 8px !important; padding: 10px !important; }
-  .card-title { color: #2563eb !important; }
-
-  .rule-box { border: 1.5px solid #555 !important; border-radius: 6px !important; break-inside: avoid !important; page-break-inside: avoid !important; padding: 10px !important; }
-  .rule-title { color: #2563eb !important; }
-  .rule-tag { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; font-size: 8pt !important; padding: 2px 6px !important; }
-  .rule-text { font-size: 10pt !important; }
-  .rule-text em { color: #2563eb !important; }
-  .rule-row { border-bottom: 1px dashed #ccc !important; }
-
-  .tip { border-left: 3px solid #2563eb !important; background: #f4f8ff !important; break-inside: avoid !important; page-break-inside: avoid !important; padding: 8px 10px !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-  .tip strong { color: #2563eb !important; }
-
-  .example-box { border: 1px solid #ccc !important; border-radius: 4px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
-  .ex-correct { color: #166534 !important; }
-
-  .num-grid { break-inside: avoid !important; page-break-inside: avoid !important; }
-  .num-item { border: 1px solid #ddd !important; }
-  .num-item .num-big { color: #2563eb !important; }
-
-  .flow-grid { break-inside: avoid !important; page-break-inside: avoid !important; }
-  .flow-step { border: 1px solid #ccc !important; }
-  .flow-arrow { color: #555 !important; }
-
-  .divider { border-top: 1px solid #ddd !important; display: block !important; }
-
-  #sec1 { page-break-before: avoid !important; }
-  #sec2, #sec3, #sec4, #sec5, #sec6 { page-break-before: always !important; }
-}
-
-/* ---- PDF EXPORT (JS-generated) ---- */
-body.pdf-export .top-nav, body.pdf-export .print-btn-wrap, body.pdf-export .nav-dots, body.pdf-export .progress-footer, body.pdf-export .bottom-nav, body.pdf-export .hero, body.pdf-export .credit, body.pdf-export .pf-bar, body.pdf-export .pf-pct { display: none !important; }
-body.pdf-export .print-title-header { display: block !important; }
-body.pdf-export { background: white !important; color: #111 !important; padding-bottom: 0 !important; }
-body.pdf-export * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; text-shadow: none !important; }
-body.pdf-export .section { padding: 10px 0 4px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
-body.pdf-export .section-title { font-weight: 700 !important; color: #14213d !important; }
-body.pdf-export .section-sub { color: #555 !important; }
-body.pdf-export .card { border: 1px solid #bbb !important; border-radius: 6px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
-body.pdf-export .card-title { color: #2563eb !important; }
-body.pdf-export .rule-box { border: 1.5px solid #555 !important; border-radius: 6px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
-body.pdf-export .rule-title, body.pdf-export .rule-text em { color: #2563eb !important; }
+.section-icon { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; background: linear-gradient(135deg,#2563eb,#f97316); }
+.section-title { font-size: 1.05rem; font-weight: 800; }
+.section-sub { font-size: .75rem; color: #5a6f96; margin-top: 2px; }
+.tip { background: linear-gradient(135deg,#e5eefe,#f6f9ff); border-left: 4px solid #f97316; border-radius: 0 12px 12px 0; padding: 12px 14px; margin-bottom: 12px; font-size: .92rem; line-height: 1.65; break-inside: avoid; }
+.tip-title { font-size: .72rem; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+.tip strong, .rule-text em { color: #1d4ed8; font-style: normal; font-weight: 700; }
+.rule-box { background: #fff; border: 2px solid #2563eb; border-radius: 14px; padding: 14px; margin-bottom: 12px; break-inside: avoid; }
+.rule-title { font-size: .72rem; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.rule-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px dashed #cfe0fb; }
+.rule-row:last-child { border-bottom: none; }
+.rule-tag { color: #fff; font-size: .75rem; font-weight: 800; padding: 3px 10px; border-radius: 6px; flex-shrink: 0; margin-top: 2px; max-width: 150px; }
+.rule-text { font-size: .9rem; line-height: 1.55; }
+.example-box { background: #f6f9ff; border: 1.5px solid #cfe0fb; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; font-size: .9rem; line-height: 1.7; break-inside: avoid; }
+.ex-label { font-size: .68rem; font-weight: 700; color: #5a6f96; text-transform: uppercase; margin-bottom: 6px; }
+.divider { height: 1px; background: #cfe0fb; margin: 8px 16px 0; }
+.bottom-nav { display: flex; gap: 10px; padding: 0 14px; margin: 20px auto 10px; max-width: 720px; }
+.bottom-nav a { flex: 1; padding: 13px 10px; border-radius: 14px; text-decoration: none; text-align: center; font-size: .85rem; font-weight: 700; border: 1.5px solid #2563eb; color: #2563eb; }
+.bottom-nav a.nx { background: linear-gradient(135deg,#2563eb,#f97316); color: #fff; border: none; }
+.progress-footer { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #cfe0fb; padding: 10px 16px; display: flex; align-items: center; gap: 12px; z-index: 20; }
+.pf-label { font-size: .75rem; font-weight: 700; color: #2563eb; }
+.pf-bar { flex: 1; background: #cfe0fb; border-radius: 10px; height: 8px; overflow: hidden; }
+.pf-fill { height: 100%; background: linear-gradient(90deg,#2563eb,#16a34a); width: 0%; transition: width .4s; }
+.pf-pct { font-size: .75rem; font-weight: 700; color: #5a6f96; }
+.credit { text-align: center; padding: 16px 14px 8px; font-size: .75rem; opacity: .5; }
+body.pdf-export .top-nav, body.pdf-export .print-btn-wrap, body.pdf-export .nav-dots, body.pdf-export .progress-footer, body.pdf-export .bottom-nav, body.pdf-export .hero { display: none !important; }
+body.pdf-export { background: #fff !important; color: #111 !important; padding-bottom: 0 !important; }
+body.pdf-export * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; }
+body.pdf-export .group-title { border-bottom: 2px solid #2563eb; border-radius: 0; padding: 4px 0; }
+body.pdf-export .rule-box { border: 1.5px solid #555 !important; }
 body.pdf-export .rule-row { border-bottom: 1px dashed #ccc !important; }
-body.pdf-export .tip { border-left: 3px solid #2563eb !important; background: #f4f8ff !important; break-inside: avoid !important; page-break-inside: avoid !important; }
-body.pdf-export .tip strong { color: #2563eb !important; }
-body.pdf-export .example-box { border: 1px solid #ccc !important; break-inside: avoid !important; page-break-inside: avoid !important; }
-body.pdf-export .ex-correct { color: #166534 !important; }
-body.pdf-export .num-grid { break-inside: avoid !important; page-break-inside: avoid !important; }
-body.pdf-export .num-item { border: 1px solid #ddd !important; }
-body.pdf-export .num-item .num-big { color: #2563eb !important; }
-body.pdf-export .flow-grid { break-inside: avoid !important; page-break-inside: avoid !important; }
-body.pdf-export .flow-step { border: 1px solid #ccc !important; }
-body.pdf-export .divider { border-top: 1px solid #ddd !important; display: block !important; }
-body.pdf-export #sec1 { page-break-before: avoid !important; }
-body.pdf-export #sec2, body.pdf-export #sec3, body.pdf-export #sec4, body.pdf-export #sec5, body.pdf-export #sec6 { page-break-before: always !important; }
-</style>
-</head>
-<body>
-
-<!-- PRINT HEADER (hidden on screen) -->
-<div class="print-title-header" style="display:none;text-align:center;padding:0 0 12px;border-bottom:2px solid #2563eb;margin-bottom:16px;">
-  <div style="font-size:14pt;font-weight:900;color:#2563eb;">Matemática — Guia de Estudos</div>
-  <div style="font-size:10pt;color:#555;margin-top:4px;">Multiplicação — Caps. 7 e 8 · Desenvolvido por Jhony Beraldo</div>
-</div>
-
-<div class="top-nav">
-  <a href="index.html">🏠 Início</a>
-  <span>📚 Resumo do Conteúdo</span>
-</div>
-<div class="hero">
-  <span class="hero-emoji">📚</span>
-  <h1>Resumo de Matemática</h1>
-  <h2>Multiplicação · Caps. 7 e 8</h2>
-  <div class="hero-pill">📝 Leia antes da prova!</div>
-</div>
-
+body.pdf-export .tip { border-left: 3px solid #2563eb !important; background: #f6f6f6 !important; }
+body.pdf-export .example-box { border: 1px solid #ccc !important; }
+body.pdf-export .section { break-inside: auto; }
+body.pdf-export .rule-tag { border: 1px solid #999; }
+</style></head><body>
+<div class="top-nav"><a href="index.html">🏠 Início</a><span>📚 Resumo do Conteúdo</span></div>
+<div class="hero"><span class="hero-emoji">📚</span><h1>Resumo de Matemática</h1><h2>4º Bimestre · Tempo e medidas</h2><div class="hero-pill">📝 Leia com calma antes de fazer os níveis!</div></div>
 <div class="print-btn-wrap"><button class="print-btn" id="pdfBtn" onclick="downloadPDF()">⬇️ Baixar PDF</button></div>
-
-<div class="nav-dots">
-  <button class="nav-dot active" data-target="sec1">🧮 Problemas</button>
-  <button class="nav-dot" data-target="sec2">➕ Parcelas</button>
-  <button class="nav-dot" data-target="sec3">🔢 Fatos</button>
-  <button class="nav-dot" data-target="sec4">📐 Config.</button>
-  <button class="nav-dot" data-target="sec5">0️⃣1️⃣ x0 x1</button>
-  <button class="nav-dot" data-target="sec6">🔟 x10 x100</button>
-</div>
-
-<!-- SEC 1 -->
-<div class="section" id="sec1">
-  <div class="section-header">
-    <div class="section-icon s1">🧮</div>
-    <div><div class="section-title">Resolução de Problemas Matemáticos</div><div class="section-sub">Passo a passo para resolver qualquer problema</div></div>
-  </div>
-
-  <div class="tip"><div class="tip-title">💡 Antes de calcular</div>
-    Leia o problema com atenção, mais de uma vez se precisar. Identifique o que já sabemos (dados) e o que precisamos descobrir (pergunta).
-  </div>
-
-  <div class="rule-box">
-    <div class="rule-title">📐 Passo a passo</div>
-    <div class="rule-row"><span class="rule-tag bg-blue">1</span><div class="rule-text">Leia com calma e destaque os números importantes.</div></div>
-    <div class="rule-row"><span class="rule-tag bg-green">2</span><div class="rule-text">Descubra qual operação resolve o problema (muitas vezes é multiplicação!).</div></div>
-    <div class="rule-row"><span class="rule-tag bg-purple">3</span><div class="rule-text">Monte a conta e resolva com cuidado.</div></div>
-    <div class="rule-row"><span class="rule-tag bg-orange">4</span><div class="rule-text">Confira se a resposta faz sentido com a pergunta.</div></div>
-  </div>
-
-  <div class="tip"><div class="tip-title">🧠 Macete</div>
-    Se o problema fala em "cada", "por", "vezes" ou repete uma mesma quantidade várias vezes, é grande chance de ser multiplicação!
-  </div>
-</div>
-<div class="divider"></div>
-
-<!-- SEC 2 -->
-<div class="section" id="sec2">
-  <div class="section-header">
-    <div class="section-icon s2">➕</div>
-    <div><div class="section-title">Adição de Parcelas Iguais</div><div class="section-sub">Quando somar vira multiplicar</div></div>
-  </div>
-
-  <div class="tip"><div class="tip-title">💡 O que são parcelas iguais?</div>
-    Quando somamos o mesmo número várias vezes, podemos trocar essa soma por uma multiplicação — é bem mais rápido!
-  </div>
-
-  <div class="example-box">
-    <div class="ex-label">Exemplo do livro</div>
-    6 + 6 + 6 + 6 + 6 + 6 (seis parcelas de 6)<br>
-    Isso é o mesmo que: <span class="ex-correct">6 × 6 = 36</span>
-  </div>
-
-  <div class="flow-grid">
-    <div class="flow-step">4 objetos</div><div class="flow-arrow">×</div>
-    <div class="flow-step">5 alunos</div><div class="flow-arrow">=</div>
-    <div class="flow-step">20 objetos</div>
-  </div>
-
-  <div class="tip"><div class="tip-title">🧠 Macete</div>
-    Sempre que um mesmo número se repete numa soma, conte quantas vezes ele aparece — esse é o segundo número da multiplicação!
-  </div>
-</div>
-<div class="divider"></div>
-
-<!-- SEC 3 -->
-<div class="section" id="sec3">
-  <div class="section-header">
-    <div class="section-icon s3">🔢</div>
-    <div><div class="section-title">Fatos Fundamentais e Regularidades</div><div class="section-sub">Dobro, triplo, comutatividade e tabuadas</div></div>
-  </div>
-
-  <div class="rule-box">
-    <div class="rule-title">📐 Dobro, triplo, quádruplo e quíntuplo</div>
-    <div class="rule-row"><span class="rule-tag bg-blue">Dobro</span><div class="rule-text">Multiplicar por <em>2</em>.<small>Ex: o dobro de 12 é 24.</small></div></div>
-    <div class="rule-row"><span class="rule-tag bg-green">Triplo</span><div class="rule-text">Multiplicar por <em>3</em>.<small>Ex: o triplo de 5 é 15.</small></div></div>
-    <div class="rule-row"><span class="rule-tag bg-purple">Quádruplo</span><div class="rule-text">Multiplicar por <em>4</em>.<small>Ex: o quádruplo de 3 é 12.</small></div></div>
-    <div class="rule-row"><span class="rule-tag bg-orange">Quíntuplo</span><div class="rule-text">Multiplicar por <em>5</em>.<small>Ex: o quíntuplo de 4 é 20.</small></div></div>
-  </div>
-
-  <div class="tip"><div class="tip-title">💡 Propriedade comutativa</div>
-    Quando trocamos a posição dos números que estão sendo multiplicados, o resultado <strong>não muda</strong>. Ex: 4 × 6 = 6 × 4 = 24.
-  </div>
-
-  <div class="example-box">
-    <div class="ex-label">Regularidade da tabuada</div>
-    Na tabuada de um número, o resultado sempre aumenta de acordo com esse mesmo número. Ex: na tabuada do 6: 6, 12, 18, 24, 30... (sempre +6).
-  </div>
-</div>
-<div class="divider"></div>
-
-<!-- SEC 4 -->
-<div class="section" id="sec4">
-  <div class="section-header">
-    <div class="section-icon s4">📐</div>
-    <div><div class="section-title">Configuração Retangular e Proporção</div><div class="section-sub">Linhas × colunas e "para cada"</div></div>
-  </div>
-
-  <div class="tip"><div class="tip-title">💡 O que é configuração retangular?</div>
-    É quando os itens estão organizados em linhas e colunas, como um quadriculado. O total é: <strong>número de linhas × número de colunas</strong>.
-  </div>
-
-  <div class="example-box">
-    <div class="ex-label">Exemplo do livro</div>
-    Uma caixa de quadradinhos com <strong>3 linhas</strong> e <strong>7 colunas</strong>: 3 × 7 = <span class="ex-correct">21 quadradinhos</span>
-  </div>
-
-  <div class="rule-box">
-    <div class="rule-title">📐 Ideia de proporção ("para cada")</div>
-    <div class="rule-row"><span class="rule-tag bg-blue">Para cada...</span><div class="rule-text">Quando cada pessoa ou grupo tem a mesma quantidade de algo.<small>Ex: cada aluno tem 3 objetos (caderno, lápis, borracha) — se são 5 alunos, 3 × 5 = 15 objetos.</small></div></div>
-  </div>
-</div>
-<div class="divider"></div>
-
-<!-- SEC 5 -->
-<div class="section" id="sec5">
-  <div class="section-header">
-    <div class="section-icon s5">0️⃣</div>
-    <div><div class="section-title">Multiplicação por 0 e por 1</div><div class="section-sub">Dois casos especiais da multiplicação</div></div>
-  </div>
-
-  <div class="rule-box">
-    <div class="rule-title">📐 As duas regras</div>
-    <div class="rule-row"><span class="rule-tag bg-pink">Multiplicar por 0</span><div class="rule-text">O resultado é <em>sempre 0</em>.<small>Ex: 8 × 0 = 0. Pense: "0 vezes" significa que não juntamos nenhum grupo.</small></div></div>
-    <div class="rule-row"><span class="rule-tag bg-blue">Multiplicar por 1</span><div class="rule-text">O resultado é <em>sempre o próprio número</em>.<small>Ex: 9 × 1 = 9. Pense: "1 vez" é a própria quantidade, sem repetir.</small></div></div>
-  </div>
-
-  <div class="example-box">
-    <div class="ex-label">Como o livro explica</div>
-    6 × 2 pode ser pensado como 2 + 2 + 2 + 2 + 2 + 2 = 12.<br>
-    6 × 1 é apenas 1 vez o 6, ou seja, 6 × 1 = 6 (sem soma repetida).
-  </div>
-</div>
-<div class="divider"></div>
-
-<!-- SEC 6 -->
-<div class="section" id="sec6">
-  <div class="section-header">
-    <div class="section-icon s6">🔟</div>
-    <div><div class="section-title">Multiplicação por 10, 100 e 1000</div><div class="section-sub">O truque dos zeros</div></div>
-  </div>
-
-  <div class="tip"><div class="tip-title">💡 O truque é acrescentar zeros!</div>
-    Para multiplicar por 10, 100 ou 1000, não precisa fazer conta demorada — basta acrescentar zeros à direita do número.
-  </div>
-
-  <div class="num-grid">
-    <div class="num-item"><div class="num-big">× 10</div><div class="num-def">Acrescenta 1 zero (0) à direita<br>Ex: 6 × 10 = 60</div></div>
-    <div class="num-item"><div class="num-big">× 100</div><div class="num-def">Acrescenta 2 zeros (00) à direita<br>Ex: 6 × 100 = 600</div></div>
-    <div class="num-item"><div class="num-big">× 1000</div><div class="num-def">Acrescenta 3 zeros (000) à direita<br>Ex: 6 × 1000 = 6000</div></div>
-    <div class="num-item"><div class="num-big">Dica</div><div class="num-def">Quantos zeros tem o número (10, 100 ou 1000), essa quantidade de zeros você acrescenta.</div></div>
-  </div>
-
-  <div class="pf-bar"><div class="pf-fill" id="pfFill"></div></div>
-  <div class="pf-pct" id="pfPct">0%</div>
-</div>
-
-<div class="bottom-nav">
-  <a href="index.html" class="btn-home">🏠 Voltar ao Início</a>
-  <a href="nivel1_basico.html" class="btn-next">⭐ Nível 1 →</a>
-</div>
-
-<div style="height:60px;"></div>
-<div class="progress-footer">
-  <div class="pf-label">📖 Progresso</div>
-  <div class="pf-bar"><div class="pf-fill" id="pfFill"></div></div>
-  <div class="pf-pct" id="pfPct">0%</div>
-</div>
-
+<div class="nav-dots"><button class="nav-dot active" data-target="sec1">📌 CLICK</button><button class="nav-dot" data-target="sec2">⏰ Tempo</button><button class="nav-dot" data-target="sec3">🕐 Relógio</button><button class="nav-dot" data-target="sec4">🌡️ Temperatura</button><button class="nav-dot" data-target="sec5">📏 Comprimento</button><button class="nav-dot" data-target="sec6">⚖️ Massa</button><button class="nav-dot" data-target="sec7">🥤 Capacidade</button><button class="nav-dot" data-target="sec8">➗ Operações</button><button class="nav-dot" data-target="sec9">✅ Revisão</button><button class="nav-dot" data-target="sec10">⭐ Dicas</button></div>
+<div class="group-title">📌 Os quadros CLICK do livro</div><div class="section" id="sec1"><div class="section-header"><div class="section-icon">📌</div><div><div class="section-title">Os CLICK do livro (decore!)</div><div class="section-sub">A professora mandou estudar estes quadros</div></div></div><div class="tip"><div class="tip-title">💡 Bora entender</div>A professora disse que a prova é <strong>baseada na revisão e nos quadros CLICK</strong> do livro. Aqui estão todos, em palavras simples. Leia em voz alta!</div><div class="rule-box"><div class="rule-title">📐 Todos os CLICK</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">Tempo</span><div class="rule-text">O tempo é uma <em>grandeza</em>. <em>Dias, horas, minutos e segundos</em> são unidades pra medir e contar o tempo. (pág. 103)</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">Hora</span><div class="rule-text">A hora (h) é uma unidade de tempo. <em>1 hora = 60 minutos</em>. (pág. 105)</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">Segundo</span><div class="rule-text">O <em>segundo (s)</em> é a unidade-padrão de medida de tempo. (pág. 106)</div></div><div class="rule-row"><span class="rule-tag" style="background:#0891b2">Temperatura</span><div class="rule-text">A temperatura é uma grandeza. O <em>grau Celsius (°C)</em> é a unidade usada no Brasil e na maioria dos países. (pág. 109)</div></div><div class="rule-row"><span class="rule-tag" style="background:#be185d">Metro</span><div class="rule-text">Em <em>1 metro (m)</em> há <em>100 centímetros (cm)</em>. (pág. 110)</div></div><div class="rule-row"><span class="rule-tag" style="background:#b45309">Quilômetro</span><div class="rule-text">Pra grandes distâncias, usamos o <em>quilômetro (km)</em>. Em <em>1 km</em> há <em>1.000 m</em>. (pág. 112)</div></div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">Comprimento</span><div class="rule-text">Comprimento é uma grandeza. <em>Quilômetro, metro, centímetro e milímetro</em> medem o comprimento. (pág. 112)</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">Quilo</span><div class="rule-text">Em <em>1 quilo (kg)</em> há <em>1.000 gramas (g)</em>. (pág. 113)</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">Tonelada</span><div class="rule-text">Em <em>1 tonelada (t)</em> há <em>1.000 quilos (kg)</em>. (pág. 114)</div></div><div class="rule-row"><span class="rule-tag" style="background:#0891b2">Massa</span><div class="rule-text">Massa é uma grandeza. <em>Tonelada, quilo, grama e miligrama</em> medem a massa. (pág. 115)</div></div><div class="rule-row"><span class="rule-tag" style="background:#be185d">Litro</span><div class="rule-text">Em <em>1 litro (L)</em> há <em>1.000 mililitros (mL)</em>. (pág. 116)</div></div><div class="rule-row"><span class="rule-tag" style="background:#b45309">Capacidade</span><div class="rule-text">Capacidade é uma grandeza. <em>Litro e mililitro</em> medem a capacidade. (pág. 117)</div></div></div></div><div class="divider"></div><div class="group-title">⏰ Tempo e temperatura</div><div class="section" id="sec2"><div class="section-header"><div class="section-icon">⏰</div><div><div class="section-title">O tempo e as horas</div><div class="section-sub">Horas, minutos e segundos</div></div></div><div class="rule-box"><div class="rule-title">📐 O que decorar</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">1 hora</span><div class="rule-text">= 60 minutos</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">1 minuto</span><div class="rule-text">= 60 segundos</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">Segundo</span><div class="rule-text">unidade-padrão de tempo</div></div></div><div class="example-box"><div class="ex-label">Passando de minutos para horas</div>Quanto é 150 minutos? 120 min = 2 horas, e sobram 30. <strong>150 min = 2 h e 30 min</strong>.<br>210 min = 3 h e 30 min · 90 min = 1 h e 30 min.</div><div class="example-box"><div class="ex-label">Passando de horas para minutos</div>1 h e 10 min = 60 + 10 = <strong>70 min</strong> · 1 h e 50 min = 60 + 50 = <strong>110 min</strong>.</div><div class="example-box"><div class="ex-label">Segundos para minutos</div>180 s ÷ 60 = <strong>3 minutos</strong>. (Menos de 1 hora!)</div><div class="tip"><div class="tip-title">🧠 Macete</div>Pra passar de horas para minutos: <strong>multiplique por 60</strong>. Pra passar de minutos para horas: <strong>divida por 60</strong>.</div></div><div class="divider"></div><div class="section" id="sec3"><div class="section-header"><div class="section-icon">🕐</div><div><div class="section-title">Lendo o relógio e somando tempo</div><div class="section-sub">O ponteiro pequeno e o grande</div></div></div><div class="rule-box"><div class="rule-title">📐 Como ler</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">Pequeno</span><div class="rule-text">ponteiro das <em>horas</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">Grande</span><div class="rule-text">ponteiro dos <em>minutos</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">Cada número</span><div class="rule-text">vale <em>5 minutos</em> pro ponteiro grande: 1 = 5 min, 2 = 10 min, 3 = 15 min, 6 = 30 min, 9 = 45 min.</div></div></div><div class="example-box"><div class="ex-label">Exemplos da revisão</div>Pequeno no 10 e grande no 2 → <strong>10h10</strong>.<br>Saiu às 13h e gastou 45 minutos → chegou às <strong>13h45</strong> (ponteiro grande no 9).<br>6h30 + 40 minutos → <strong>7h10</strong> (6h30 + 30 min = 7h, e mais 10 min).<br>8h20: faltam <strong>40 minutos</strong> pra 9h (20 + 40 = 60).</div><div class="tip"><div class="tip-title">🧠 Dica da tarde</div>Depois do meio-dia, 13h = 1 hora da tarde, 14h = 2 horas da tarde, e assim por diante.</div></div><div class="divider"></div><div class="section" id="sec4"><div class="section-header"><div class="section-icon">🌡️</div><div><div class="section-title">Temperatura</div><div class="section-sub">Graus Celsius</div></div></div><div class="rule-box"><div class="rule-title">📐 O que decorar</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">Máxima</span><div class="rule-text">a <em>maior</em> temperatura do dia.</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">Mínima</span><div class="rule-text">a <em>menor</em> temperatura do dia.</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">Variação</span><div class="rule-text"><em>máxima − mínima</em>. Ex.: 36 − 22 = 14 graus.</div></div></div><div class="example-box"><div class="ex-label">Exemplo da revisão</div>Terça: máxima 36 °C e mínima 22 °C. A temperatura varia <strong>14 °C</strong>.</div><div class="example-box"><div class="ex-label">Exemplo do livro</div>O queijo deve ficar a 15 °C e a câmara está a 17 °C. 17 − 15 = 2. Tem que <strong>baixar 2 °C</strong>.</div></div><div class="divider"></div><div class="group-title">📏 Comprimento, massa e capacidade</div><div class="section" id="sec5"><div class="section-header"><div class="section-icon">📏</div><div><div class="section-title">Comprimento</div><div class="section-sub">Metro, quilômetro, centímetro, milímetro</div></div></div><div class="rule-box"><div class="rule-title">📐 O que decorar</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">1 m</span><div class="rule-text">= 100 cm</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">1 km</span><div class="rule-text">= 1.000 m</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">Qual usar?</span><div class="rule-text"><em>km</em>: distâncias grandes · <em>m</em>: coisas grandes (trator) · <em>cm</em>: mão, régua · <em>mm</em>: coisas bem pequenas (ponta do lápis, formiga)</div></div></div><div class="example-box"><div class="ex-label">Exemplos do livro</div>300 m + 700 m = 1.000 m = <strong>1 km</strong>.<br>3 km = <strong>3.000 m</strong>.<br>980 m é <strong>menos</strong> que 1 km.<br>Casa da Sara até a escola: 5 <strong>quilômetros</strong>. Ponta do lápis: <strong>milímetros</strong>.</div><div class="example-box"><div class="ex-label">Régua da revisão</div>O risco da Ana vai do 0 até o 5: mede <strong>5 centímetros</strong>.</div></div><div class="divider"></div><div class="section" id="sec6"><div class="section-header"><div class="section-icon">⚖️</div><div><div class="section-title">Massa</div><div class="section-sub">Quilo, grama, tonelada, miligrama</div></div></div><div class="rule-box"><div class="rule-title">📐 O que decorar</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">1 kg</span><div class="rule-text">= 1.000 g</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">1 t</span><div class="rule-text">= 1.000 kg</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">Qual usar?</span><div class="rule-text"><em>tonelada</em>: caminhão · <em>quilo</em>: pessoas · <em>grama</em>: queijo · <em>miligrama</em>: coisas levíssimas (formiga)</div></div></div><div class="example-box"><div class="ex-label">Exemplos do livro</div>1 quilo e meio = 1.000 + 500 = <strong>1.500 g</strong>.<br>978 g: faltam <strong>22 g</strong> pra 1 quilo.<br>Pirarucu de 250 kg: <strong>4</strong> completam 1 tonelada (250 × 4 = 1.000).<br>Duas vacas de 650 kg = <strong>1.300 kg</strong> (mais que 1 tonelada).</div></div><div class="divider"></div><div class="section" id="sec7"><div class="section-header"><div class="section-icon">🥤</div><div><div class="section-title">Capacidade</div><div class="section-sub">Litro e mililitro</div></div></div><div class="rule-box"><div class="rule-title">📐 O que decorar</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">1 L</span><div class="rule-text">= 1.000 mL</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">Copo</span><div class="rule-text">250 mL; xícara 200 mL (do livro)</div></div></div><div class="example-box"><div class="ex-label">Exemplos do livro</div>3 copos de 250 mL = <strong>750 mL</strong> (menos de 1 litro).<br>1 litro enche 5 copos → 15 copos = <strong>3 litros</strong>.<br>Iogurte: 1 L por R$ 6,00 ou 500 mL por R$ 4,00? Dois de 500 mL custam R$ 8,00. <strong>O de 1 L é mais barato</strong>.<br>8 copos de 300 mL = 2.400 mL = 2,4 L.</div></div><div class="divider"></div><div class="group-title">🧮 Problemas e revisão da professora (conferida)</div><div class="section" id="sec8"><div class="section-header"><div class="section-icon">➗</div><div><div class="section-title">Problemas com as quatro operações</div><div class="section-sub">Somar, subtrair, multiplicar e dividir</div></div></div><div class="rule-box"><div class="rule-title">📐 Qual conta usar?</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">Juntar</span><div class="rule-text"><em>somar</em> (+). Ex.: 1.259 + 3.500 + 237 = 4.996.</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">Tirar, sobrar, diferença</span><div class="rule-text"><em>subtrair</em> (−). Ex.: 10.000 − 4.996 = 5.004.</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">Vários iguais</span><div class="rule-text"><em>multiplicar</em> (×). Ex.: 1.569 × 17 = 26.673.</div></div><div class="rule-row"><span class="rule-tag" style="background:#0891b2">Repartir</span><div class="rule-text"><em>dividir</em> (÷). Ex.: 385 ÷ 7 = 55. 68 ÷ 6 = 11 e sobram 2.</div></div></div><div class="tip"><div class="tip-title">🧠 Dica</div>Em contas de dividir com resto: <strong>6 × 11 = 66</strong> e <strong>68 − 66 = 2</strong>. Cada caixa fica com 11 e sobram 2. Pra confirmar, multiplique de volta e some o resto.</div><div class="tip"><div class="tip-title">🔢 "Perto de" (arredondar)</div>1.462 está perto de qual? Compare as distâncias: até 1.500 são 38, até 1.400 são 62. Então está perto de <strong>1.500</strong>.</div></div><div class="divider"></div><div class="section" id="sec9"><div class="section-header"><div class="section-icon">✅</div><div><div class="section-title">Revisão da professora: respostas conferidas</div><div class="section-sub">Atenção: algumas respostas escritas na revisão estavam erradas</div></div></div><div class="tip"><div class="tip-title">⚠️ Cuidado</div>Conferi todas as contas da revisão. Estas são as respostas certas. <strong>As que estavam diferentes na revisão da Alice estão marcadas com ⚠️.</strong></div><div class="rule-box"><div class="rule-title">📐 Respostas certas</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">1a</span><div class="rule-text">Segunda: goiaba. Sexta: abacate. → <em>Abacate e goiaba</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">2a ⚠️</span><div class="rule-text">País mais populoso: <em>Índia, 1.572 milhões</em>. (Não é 1.800: esse é só o número da escala.)</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">2b ⚠️</span><div class="rule-text">Diferença Índia − EUA: 1.572 − 397 = <em>1.175 milhões</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#0891b2">2c ⚠️</span><div class="rule-text">China (1.462) está perto de <em>1.500</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#be185d">3 ⚠️</span><div class="rule-text">Relógio: pequeno no 10, grande no 2 → <em>10h10</em> da manhã.</div></div><div class="rule-row"><span class="rule-tag" style="background:#b45309">4</span><div class="rule-text">Pedro: 13h + 45 min = <em>13h45</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">5</span><div class="rule-text">Régua da Ana: <em>5 cm</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">6</span><div class="rule-text">Sexta máxima <em>36 °C</em> · Domingo mínima <em>23 °C</em> · Terça varia 36 − 22 = <em>14 °C</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">7</span><div class="rule-text">68 ÷ 6 = <em>11, sobram 2</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#0891b2">8</span><div class="rule-text">385 ÷ 7 = <em>55</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#be185d">9 ⚠️</span><div class="rule-text">Gastou 4.996. Sobrou 10.000 − 4.996 = <em>R$ 5.004,00</em>.</div></div><div class="rule-row"><span class="rule-tag" style="background:#b45309">10</span><div class="rule-text">1.569 × 17 = <em>26.673</em>.</div></div></div><div class="tip"><div class="tip-title">📖 Exercícios do livro com resposta trocada</div>Pág. 112: a distância da casa da Sara até a escola é de 5 <strong>quilômetros</strong> (não milímetros) e a ponta de um lápis se mede em <strong>milímetros</strong> (não quilômetros).</div></div><div class="divider"></div><div class="section" id="sec10"><div class="section-header"><div class="section-icon">⭐</div><div><div class="section-title">Dicas finais</div><div class="section-sub">Revisão relâmpago</div></div></div><div class="rule-box"><div class="rule-title">📐 Tudo em 6 linhas</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">Tempo</span><div class="rule-text">1 h = 60 min · 1 min = 60 s</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">Temperatura</span><div class="rule-text">variação = máxima − mínima</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">Comprimento</span><div class="rule-text">1 m = 100 cm · 1 km = 1.000 m</div></div><div class="rule-row"><span class="rule-tag" style="background:#0891b2">Massa</span><div class="rule-text">1 kg = 1.000 g · 1 t = 1.000 kg</div></div><div class="rule-row"><span class="rule-tag" style="background:#be185d">Capacidade</span><div class="rule-text">1 L = 1.000 mL</div></div><div class="rule-row"><span class="rule-tag" style="background:#b45309">Relógio</span><div class="rule-text">pequeno = horas · grande = minutos (cada número = 5 min)</div></div></div><div class="rule-box"><div class="rule-title">📐 Checklist antes da prova</div><div class="rule-row"><span class="rule-tag" style="background:#2563eb">1</span><div class="rule-text">Sei os 11 quadros CLICK de cor?</div></div><div class="rule-row"><span class="rule-tag" style="background:#16a34a">2</span><div class="rule-text">Sei ler relógio e somar minutos?</div></div><div class="rule-row"><span class="rule-tag" style="background:#7c3aed">3</span><div class="rule-text">Sei achar a variação de temperatura?</div></div><div class="rule-row"><span class="rule-tag" style="background:#0891b2">4</span><div class="rule-text">Sei escolher a unidade certa (km, m, cm, mm / t, kg, g, mg / L, mL)?</div></div><div class="rule-row"><span class="rule-tag" style="background:#be185d">5</span><div class="rule-text">Refiz as questões da revisão sem olhar?</div></div></div><div class="tip"><div class="tip-title">🌟 Você consegue!</div>Leia o resumo, faça os níveis e leia as explicações. Errar faz parte de aprender!</div></div><div class="divider"></div>
+<div class="bottom-nav"><a href="index.html">🏠 Início</a><a class="nx" href="nivel1_basico.html">⭐ Nível 1 →</a></div>
+<div style="height:60px"></div>
+<div class="progress-footer"><div class="pf-label">📖 Progresso</div><div class="pf-bar"><div class="pf-fill" id="pfFill"></div></div><div class="pf-pct" id="pfPct">0%</div></div>
 <div class="credit">Desenvolvido por <strong>Jhony Beraldo</strong></div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-document.querySelectorAll('.nav-dot[data-target]').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.nav-dot').forEach(function(d) { d.classList.remove('active'); });
-    btn.classList.add('active');
-    var target = document.getElementById(btn.dataset.target);
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-var sections = ['sec1','sec2','sec3','sec4','sec5','sec6'];
-function updateProgress() {
-  var scrolled = window.scrollY + window.innerHeight;
-  var total = document.body.scrollHeight;
-  var pct = Math.min(100, Math.round((scrolled / total) * 100));
-  document.getElementById('pfFill').style.width = pct + '%';
-  document.getElementById('pfPct').textContent = pct + '%';
-  for (var i = sections.length - 1; i >= 0; i--) {
-    var el = document.getElementById(sections[i]);
-    if (el && window.scrollY >= el.offsetTop - 120) {
-      document.querySelectorAll('.nav-dot').forEach(function(d, idx) { d.classList.toggle('active', idx === i); });
-      break;
-    }
-  }
+var sections = ['sec1','sec2','sec3','sec4','sec5','sec6','sec7','sec8','sec9','sec10'];
+document.querySelectorAll('.nav-dot').forEach(function(b){ b.addEventListener('click', function(){
+  document.querySelectorAll('.nav-dot').forEach(function(d){ d.classList.remove('active'); }); b.classList.add('active');
+  var t = document.getElementById(b.getAttribute('data-target')); if (t) t.scrollIntoView({behavior:'smooth', block:'start'}); }); });
+function updateProgress(){
+  var pct = Math.min(100, Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100));
+  document.getElementById('pfFill').style.width = pct + '%'; document.getElementById('pfPct').textContent = pct + '%';
+  for (var i = sections.length - 1; i >= 0; i--) { var el = document.getElementById(sections[i]);
+    if (el && window.scrollY >= el.offsetTop - 140) { document.querySelectorAll('.nav-dot').forEach(function(d, idx){ d.classList.toggle('active', idx === i); }); break; } }
 }
-window.addEventListener('scroll', updateProgress, { passive: true });
-updateProgress();
+window.addEventListener('scroll', updateProgress, { passive: true }); updateProgress();
 
 function downloadPDF() {
   var btn = document.getElementById('pdfBtn');
@@ -381,25 +83,15 @@ function downloadPDF() {
   btn.textContent = '⏳ Gerando PDF...';
   btn.disabled = true;
   document.body.classList.add('pdf-export');
-  var opt = {
-    margin: 12,
-    filename: 'Resumo_Matematica.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    pagebreak: { mode: ['css', 'legacy'] }
-  };
+  var opt = { margin: 12, filename: 'Resumo_Matematica_4Bim.pdf', image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'legacy'] } };
   html2pdf().set(opt).from(document.body).save().then(function() {
-    document.body.classList.remove('pdf-export');
-    btn.textContent = originalText;
-    btn.disabled = false;
+    document.body.classList.remove('pdf-export'); btn.textContent = originalText; btn.disabled = false;
   }).catch(function(err) {
-    document.body.classList.remove('pdf-export');
-    btn.textContent = originalText;
-    btn.disabled = false;
+    document.body.classList.remove('pdf-export'); btn.textContent = originalText; btn.disabled = false;
     alert('Nao foi possivel gerar o PDF. Tente novamente.');
   });
 }
-</script>
-</body>
-</html>
+
+</script></body></html>
